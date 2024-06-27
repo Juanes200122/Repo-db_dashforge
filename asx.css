@@ -1,0 +1,199 @@
+:root {
+
+    --color_blue: #5b6bff;
+}
+
+.side-bar {
+    width: 300px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0px;
+    overflow: hidden;
+    border-right: 1px solid rgb(231, 231, 231);
+    position: fixed;
+}
+
+.side-bar .side-top {
+    width: 300px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+}
+
+.side-bar .side-top #initials-logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: relative;
+    font-weight: bold;
+}
+
+.side-bar .side-top #initials-logo::before {
+    content: "";
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    background-color: var(--color_blue);
+    z-index: -1;
+    border-radius: 10px;
+}
+
+.side-bar .side-top #name-actuality {
+    font-weight: bold;
+    font-size: 22px;
+    color: var(--color_blue);
+}
+
+.side-bar .side-center {
+    width: 300px;
+    height: 510px;
+}
+
+.side-bar .side-center .nav-navbar {
+    min-height: 300px;
+    overflow: auto;
+}
+
+.side-bar .side-center .nav-navbar ul li {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0px;
+    font-size: 15px;
+}
+
+.side-bar .side-center .nav-navbar ul li .settings {
+    padding: 0px 20px;
+    color: rgb(102, 102, 102);
+}
+
+.side-bar .side-center .nav-navbar ul li a {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    color: rgb(156, 156, 156);
+}
+
+.side-bar .side-center .nav-navbar ul li a:hover {
+    color: var(--color_blue);
+}
+
+.side-bar .side-center .nav-navbar ul li a:hover:after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 70%;
+    background-color: var(--color_blue);
+    left: 0;
+    border-radius: 5px;
+    transform: translate(-5px, 0px);
+}
+
+.side-bar .side-center .nav-navbar .text-settings {
+    padding: 0px 30px;
+    color: rgb(103, 103, 103);
+}
+
+.side-bar .content-side-bar {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.side-bar .content-side-bar .logo {
+    width: 60px;
+    height: 60px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    border-radius: 50%;
+    top: -30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+    transform: translate(0px, 20px);
+}
+
+.side-bar .content-side-bar .logo .link-help__02 {
+    width: 40px;
+    height: 40px;
+    background-color: var(--color_blue);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.side-bar .content-side-bar .clas-space {
+    width: 100%;
+    height: 310px;
+    background-color: var(--color_blue);
+    border-radius: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.side-bar .content-side-bar .clas-space .dv-span1 .host-span-01 {
+    width: 140px;
+    height: 140px;
+    background-color: rgba(146, 168, 255, 0.2980392157);
+    position: absolute;
+    left: 0;
+    border-radius: 10px 10px 190px 10px;
+    transform: translate(-30px, -30px);
+    border: 2px solid rgba(255, 255, 255, 0.121);
+}
+
+.side-bar .content-side-bar .clas-space .dv-span1 .host-span-02 {
+    width: 160px;
+    height: 160px;
+    background-color: rgba(146, 168, 255, 0.2980392157);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-radius: 590px 100px 90px 60px;
+    transform: translate(30px, 40px);
+    border: 2px solid rgba(255, 255, 255, 0.121);
+}
+
+.side-bar .content-side-bar .clas-space .text-cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    color: white;
+}
+
+.side-bar .content-side-bar .clas-space .text-cards .link-help .button_div {
+    margin-top: 40px;
+    padding: 10px 25px;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    z-index: 99;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    color: black;
+    box-shadow: 2px 2px 10px #766efd, -2px -2px 10px #7a96fa;
+    transition: color 0.2s ease-in-out;
+}
+
+.side-bar .content-side-bar .clas-space .text-cards .link-help .button_div:hover {
+    color: var(--color_blue);
+}

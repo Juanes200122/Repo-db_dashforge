@@ -1,0 +1,559 @@
+    .container_dashboard .bloque_estadisticas {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+
+    .container_dashboard .bloque_estadisticas .containers {
+        height: 70px;
+        border-radius: 10px;
+        background-color: #ffffff;
+        padding: 10px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .container_dashboard .bloque_estadisticas .containers .iconsFooter {
+        width: 50px;
+        height: 100%;
+        border-radius: 10px;
+    }
+
+    .container_dashboard .bloque_estadisticas .containers .flex {
+        display: flex;
+        flex-direction: column;
+        padding-left: 10px;
+    }
+
+    .container_dashboard .bloque_estadisticas .containers .flex span:nth-child(1) {
+        font-weight: bold;
+    }
+
+    .container_dashboard .bloque_estadisticas .containers .flex .bloque_nm {
+        display: flex;
+        align-items: center;
+        position: relative;
+        left: 20px;
+        gap: 3px;
+        font-size: 13;
+        color: #7c7c7c;
+    }
+
+    .container_dashboard .bloque_estadisticas .containers .flex div .circle {
+        width: 5px;
+        height: 5px;
+        background-color: rgb(128, 0, 255);
+        border-radius: 50%;
+    }
+
+    .container_dashboard .bloque_informativo {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 10px;
+        margin: 30px 0px;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_2 .filter {
+        backdrop-filter: blur(20px);
+        padding: 10px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_2 .filter span:nth-child(1) {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_2 .filter span:nth-child(2) {
+        font-size: 14px;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_1,
+    .container_dashboard .bloque_informativo .bloque_2 {
+        height: 250px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_2 {
+        background-image: url('https://st2.depositphotos.com/2435561/5260/i/450/depositphotos_52600881-stock-photo-small-red-stable-and-view.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        color: white;
+    }
+
+    .container_dashboard .bloque_estadisticas .containers .iconsFooter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .bloque_bottom {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 10px;
+        margin: 30px 0px;
+    }
+
+    .bloque_bottom .element_restaurantes {
+        height: 250px;
+    }
+
+    .bloque_bottom .element_restaurantes .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 10px;
+    }
+
+    .bloque_bottom .element_restaurantes .top h1 {
+        font-size: 20px;
+    }
+
+    .bloque_bottom .element_restaurantes .top a {
+        font-size: 13px;
+    }
+
+    .bloque_bottom .element_usuarios h1 {
+        font-size: 20px;
+        position: relative;
+        left: 40px;
+        width: max-content;
+    }
+
+    .bloque_bottom .element_usuarios h1::before {
+        content: '';
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-image: url(../public/image/fuego.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        left: -30px;
+    }
+
+    .bloque_bottom .element_usuarios .container_bloqueUsers {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .bloque_bottom .element_usuarios .container_bloqueUsers .element {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .bloque_bottom .element_usuarios .container_bloqueUsers .element .image,
+    .bloque_bottom .element_usuarios .container_bloqueUsers .element .name,
+    .bloque_bottom .element_usuarios .container_bloqueUsers .element .lastConnect {
+        height: 60px;
+    }
+
+    .bloque_bottom .element_usuarios .container_bloqueUsers .element .image {
+        width: 60px !important;
+        background-color: rgb(255, 255, 255);
+        border-radius: 20px;
+    }
+
+    .bloque_bottom .element_usuarios .container_bloqueUsers .element .name {
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .bloque_bottom .element_usuarios .container_bloqueUsers .element .name .nameUser {
+        font-weight: bold;
+    }
+
+    .bloque_bottom .element_usuarios .container_bloqueUsers .element .name .typeUser {
+        font-size: 13px;
+        color: rgb(124, 124, 124);
+        transform: translate(0px, -5px);
+    }
+
+
+    .bloque_bottom .element_usuarios .container_bloqueUsers .element .lastConnect {
+        width: calc(100% - 410px);
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        font-size: 13px;
+        color: rgb(124, 124, 124);
+    }
+
+    .container_dashboard .bloque_informativo .bloque_2 {
+        overflow: hidden;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_2 span {
+        position: relative;
+        z-index: 99;
+    }
+
+    .bloque_bottom .element_restaurantes .bottom {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        top: 20px;
+        position: relative;
+    }
+
+    .bloque_bottom .element_restaurantes .bottom .container_element {
+        background-color: rgb(255, 255, 255);
+        height: 280px;
+        border-radius: 10px;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bloque_bottom .element_restaurantes .bottom .container_element .information {
+        display: flex;
+        flex-direction: column;
+        font-size: 13px;
+        color: #7c7c7c;
+        padding: 10px 5px;
+        gap: 5px;
+    }
+
+    .bloque_bottom .element_restaurantes .bottom .container_element .information .name {
+        font-weight: bold;
+        font-size: 16px;
+        color: black;
+    }
+
+    .bloque_bottom .element_restaurantes .bottom .container_element .information .name,
+    .bloque_bottom .element_restaurantes .bottom .container_element .information .addres,
+    .bloque_bottom .element_restaurantes .bottom .container_element .information .phone {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .bloque_bottom .element_restaurantes .bottom .container_element .image_rest {
+        width: 100%;
+        height: 150px;
+        background-image: url('https://kandataexperts.com/assets/images/sin_imagen.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 10px;
+        border: 1px solid rgb(238, 238, 238);
+    }
+
+
+    .container_dashboard .bloque_informativo .bloque_1 {
+        display: flex;
+        padding: 20px;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_1 .text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_1 .text span:nth-child(1) {
+        font-weight: bold;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_1 .text span:nth-child(2) {
+        font-size: 14px;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic {
+        display: flex;
+        gap: 40px;
+        padding: 20px 20px 0px 20px;
+        height: calc(100% - 72px);
+    }
+
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .line {
+        width: 9px;
+        height: 100%;
+        background-color: rgb(243, 243, 243);
+        display: flex;
+        flex-direction: column-reverse;
+        border-radius: 20px;
+        position: relative;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .line .line_top {
+        width: 10px;
+        position: relative;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left {
+        height: 100%;
+        width: 100%;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_right {
+        width: 300px;
+        height: 100%;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .Enero:after {
+        content: 'Enero';
+        left: -25px;
+        bottom: 10px;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .Febrero:after {
+        content: 'Febrero';
+        left: -30px;
+        bottom: 15px;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .Marzo:after {
+        content: 'Marzo';
+        left: -25px;
+        bottom: 10px;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .Abril:after {
+        content: 'Abril';
+        left: -20px;
+        bottom: 5px;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .Mayo:after {
+        content: 'Mayo';
+        left: -25px;
+        bottom: 10px;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .Junio:after {
+        content: 'Junio';
+        left: -23px;
+        bottom: 10px;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .Julio:after {
+        content: 'Julio';
+        left: -20px;
+        bottom: 10px;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .Agosto:after {
+        content: 'Agosto';
+        left: -30px;
+        bottom: 15px;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .Septiembre:after {
+        content: 'Septiembre';
+        left: -43px;
+        bottom: 30px;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .Octubre:after {
+        content: 'Octubre';
+        left: -32px;
+        bottom: 20px;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .Noviembre:after {
+        content: 'Noviembre';
+        left: -40px;
+        bottom: 25px;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .Diciembre:after {
+        content: 'Diciembre';
+        left: -38px;
+        bottom: 25px;
+    }
+
+
+
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .Enero:after,
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .Febrero:after,
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .Marzo:after,
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .Abril:after,
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .Mayo:after,
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .Junio:after,
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .Julio:after,
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .Agosto:after,
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .Septiembre:after,
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .Octubre:after,
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .Noviembre:after,
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .Diciembre:after {
+        position: absolute;
+        rotate: -90deg;
+        font-size: 12px;
+        color: #363636;
+        font-weight: 300;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .line .balde_grande .hover_bar,
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .line .balde_mediano .hover_bar,
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .line .balde_pequeño .hover_bar {
+        display: none;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .line .balde_grande:hover .hover_bar,
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .line .balde_mediano:hover .hover_bar,
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .line .balde_pequeño:hover .hover_bar {
+        background: #00000087;
+        color: white;
+        font-size: 12px;
+        width: max-content;
+        position: relative;
+        z-index: 9;
+        padding: 5px 10px;
+        border-radius: 5px;
+        top: -10px;
+        right: -10px;
+        display: flex;
+        gap: 5px;
+    }
+
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .line .balde_grande:hover .hover_bar .color,
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .line .balde_mediano:hover .hover_bar .color,
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .line .balde_pequeño:hover .hover_bar .color {
+        width: 15px;
+        height: 15px;
+        border: 2px solid rgba(255, 255, 255, 0.804);
+    }
+
+    /*Colores para el tipo de balde grande*/
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .line .balde_grande,
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .line .balde_grande .hover_bar .color {
+        background-color: #4bc0c0;
+    }
+
+    /*Colores para el tipo de balde mediano*/
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .line .balde_mediano,
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .line .balde_mediano .hover_bar .color {
+        background-color: #5b6bff;
+    }
+
+    /*Colores para el tip de balde pequeño*/
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .line .balde_pequeño,
+    .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic .line .balde_pequeño .hover_bar .color {
+        background-color: #ff6384;
+    }
+
+
+    @media (max-width: 1500px) {
+        .container_dashboard .bloque_informativo .bloque_1 {
+            flex-direction: column;
+            height: max-content;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic {
+            height: 170px;
+            justify-content: center;
+        }
+
+        .container_dashboard .bloque_informativo .bloque_2 {
+            height: auto;
+        }
+
+        #myChart {
+            width: 300px !important;
+            height: 300px !important;
+        }
+
+        .bloque_bottom .element_restaurantes .bottom {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+    }
+
+    @media (max-width: 1300px) {
+        .container_dashboard .bloque_estadisticas {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .bloque_bottom .element_restaurantes {
+            min-height: 250px;
+            height: auto;
+        }
+
+        .bloque_bottom {
+            grid-template-columns: auto;
+            gap: 80px;
+        }
+
+        .bloque_bottom .element_restaurantes .bottom {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .container_element .sidebar_navbar {
+            width: 80px;
+            overflow: hidden;
+        }
+
+        .container_element .section_container {
+            width: calc(100% - 80px);
+            left: 80px;
+        }
+    }
+
+    @media (max-width: 990px) {
+        .container_dashboard .bloque_informativo {
+            grid-template-columns: auto;
+        }
+        .container_dashboard .bloque_informativo .bloque_2 {
+            height: 250px;
+        }
+    }
+
+    @media (max-width: 750px) {
+        .container_dashboard .bloque_informativo .bloque_1 .bloque_left .line_grafic {
+            display: none;
+        }
+    }
+
+    @media (max-width: 660px) {
+        .bloque_bottom .element_restaurantes .bottom {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .element_usuarios {
+            display: none;
+        }
+        .container_dashboard .bloque_estadisticas {
+            grid-template-columns: repeat(1, 1fr);
+        }
+        .container_element .sidebar_navbar {
+            width: 100%;
+            height: 80px;
+            bottom: 0;
+            z-index: 9999;
+            top: auto;
+        }
+        .container_element .section_container {
+            width: 100%;
+            left: 0;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .container_element .section_container .navbar-nav .bloque_welcome {
+            display: none;
+        }
+        .container_element .section_container .navbar-nav {
+            justify-content: end;
+        }
+    }
