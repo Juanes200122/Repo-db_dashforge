@@ -1,3 +1,12 @@
+<?php
+
+if (isset($_POST['id_usuario'])) {
+    
+    $id_usuario = $_POST['id_usuario'];
+
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -94,6 +103,8 @@
         </div>
     </div>
 
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script type="text/javascript" charset="utf8" src="assets/js/jquery_datatables.js"></script>
@@ -118,37 +129,56 @@
                           
                             const elemento = document.getElementById('aply_onclick');
                             elemento.onclick = function() {
-                                enviarFormulario();
+                                if (validarFormulario()) {
+                                    enviarFormulario();
+                                }
                             };
 
-                            function enviarFormulario() {
-                            var formData = new FormData(document.getElementById('myForm'));
-
-                            fetch('db/send_dataUsuarios.php', {
-                                method: 'POST',
-                                body: formData
-                            })
-                            .then(response => {
-                                if (!response.ok) {
-                                    throw new Error('Network response was not ok');
+                            function validarFormulario() {
+                                const form = document.getElementById('myForm');
+                                const inputs = form.querySelectorAll('input[require], select[require]');
+                                for (let input of inputs) {
+                                    if (!input.value.trim()) {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Error',
+                                            text: 'Todos los campos son obligatorios.'
+                                        });
+                                        return false;
+                                    }
                                 }
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Datos enviados correctamente',
-                                    text: 'Aquí puedes agregar código adicional después del envío exitoso'
-                                });
-                            })
-                            .catch(error => {
-                                console.error('Hubo un problema con la petición Fetch:', error);
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Error',
-                                    text: 'Hubo un problema con la petición Fetch. Por favor, inténtalo de nuevo más tarde.'
-                                });
-                            });
-                        }
+                                return true;
+                            }
 
-                          
+                            function enviarFormulario() {
+                                var formData = new FormData(document.getElementById('myForm'));
+
+                                fetch('db/send_dataUsuarios.php', {
+                                    method: 'POST',
+                                    body: formData
+                                })
+                                .then(response => {
+                                    if (!response.ok) {
+                                        throw new Error('Network response was not ok');
+                                    }
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Success',
+                                        text: 'Usuario almacenado exitosamente'
+                                    }).then(() => {
+                                        document.getElementById('myForm').reset();
+                                    });
+                                })
+                                .catch(error => {
+                                    console.error('Hubo un problema con la petición Fetch:', error);
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Error',
+                                        text: 'Hubo un problema con la petición Fetch. Por favor, inténtalo de nuevo más tarde.'
+                                    });
+                                });
+                            }
+                                                                                      
                         }
 
                         // Una vez cargada la vista, inicializar DataTables 
@@ -211,7 +241,7 @@
                                     labels: [],
                                     datasets: [{
                                         label: 'Tipo Producto',
-                                        data: [1, 1, 1],
+                                        data: [23, 12, 21],
                                         backgroundColor: [
                                             '#4bc0c0',
                                             '#5b6bff',
@@ -277,12 +307,40 @@
             modalSection.style.display = 'block';
         }
 
+
+
+
+
+        function edit_datos_formulario(id_usuario, nombre, telefono, email, nombre_ciudad,  tipo_documento, nit, fecha_registro, user_login, contrasena, id_ciudad, id_tipo_documento) {
+            const open_edit = document.getElementById('edi_modal_section');
+            open_edit.style.display = 'block';
+
+            document.getElementById('value_id_usuario').value = id_usuario;
+            document.getElementById('value_nombre').value = nombre;
+            document.getElementById('value_telefono').value = telefono;
+            document.getElementById('value_documento').textContent = tipo_documento;
+            document.getElementById('value_documento').value = id_tipo_documento;
+            document.getElementById('value_nit').value = nit;
+            document.getElementById('value_ciudad').value = id_ciudad;
+            document.getElementById('value_ciudad').textContent = nombre_ciudad;
+            document.getElementById('value_fecha').value = fecha_registro;
+            document.getElementById('value_login').value = user_login;
+            document.getElementById('value_contrasena').value = contrasena;
+            document.getElementById('value_email').value = email;
+        }
+
+
+
+
+
         function closeModal() {
             const modalClose = document.getElementById('open_modal_section');
             modalClose.style.display = 'none';
+
+            const open_edit = document.getElementById('edi_modal_section');
+            open_edit.style.display = 'none';
         }
     </script>
-
 
 
 

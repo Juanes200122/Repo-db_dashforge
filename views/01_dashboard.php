@@ -18,7 +18,7 @@ include '../db/consult_dashboard.php';
                 </div>
             </div>
             <div class="iconsFooter">
-                <img src="../public/image/localizacion.png" alt="" width="40px">
+                <img src="public/image/localizacion.png" alt="" width="40px">
             </div>
         </div>
         <div class="containers">
@@ -30,7 +30,7 @@ include '../db/consult_dashboard.php';
                 </div>
             </div>
             <div class="iconsFooter">
-                <img src="../public/image/cuchilleria (1).png" alt="" width="40px">
+                <img src="public/image/cuchilleria (1).png" alt="" width="40px">
             </div>
         </div>
         <div class="containers">
@@ -42,7 +42,7 @@ include '../db/consult_dashboard.php';
                 </div>
             </div>
             <div class="iconsFooter">
-                <img src="../public/image/usuario (1).png" alt="" width="40px">
+                <img src="public/image/usuario (1).png" alt="" width="40px">
             </div>
         </div>
         <div class="containers">
@@ -54,7 +54,7 @@ include '../db/consult_dashboard.php';
                 </div>
             </div>
             <div class="iconsFooter">
-                <img src="../public/image/deuda (1).png" alt="" width="40px">
+                <img src="public/image/deuda (1).png" alt="" width="40px">
             </div>
         </div>
     </div>
@@ -64,7 +64,7 @@ include '../db/consult_dashboard.php';
             <div class="bloque_left">
                 <div class="text">
                     <span>Administra el inventario de tus productos
-                        <img src="../inventario.gif" alt="" width="30px">
+                        <img src="inventario.gif" alt="" width="30px">
                     </span>
                     <span>Mantén un control preciso y actualizado del inventario de productos de tu negocio</span>
                 </div>

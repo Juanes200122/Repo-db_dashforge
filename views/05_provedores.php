@@ -1,3 +1,9 @@
+<?php
+include '../db/consult_usuarios.php';
+
+?>
+
+
 <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">-->
 <link rel="stylesheet" type="text/css" href="assets/css/css_datatables.css">
 
@@ -196,6 +202,16 @@
         border-bottom: 1px solid #e5e5e5;
         outline: none;
     }
+
+    #id_delete_alert {
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
+        border-radius: 0;
+        width: max-content;
+        color: red;
+        box-shadow: none;
+    }
 </style>
 
 <div class="flex_flex">
@@ -204,28 +220,45 @@
             <thead>
                 <tr style="text-align: justify;">
                     <th>Nombre</th>
-                    <th>Fecha</th>
-                    <th>Nit</th>
+                    <th>Ciudad</th>
+                    <th>NIT</th>
                     <th>Tipo documento</th>
-                    <th>Direccion</th>
+                    <th>Producto asociado</th>
                     <th style="text-align: center;">Configuraciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>juan esteban</td>
-                    <td>2024-02-02</td>
-                    <td>1004898823</td>
-                    <td>Cedula de ciudadania</td>
-                    <td>calle 12 #15-36</td>
-                    <th class="th_ankor">
-                        <form action="">
-                            <a class="ankor_link" href="">
-                                <img src="public/image/trash3-fill.svg" alt="">
-                            </a>
-                        </form>
-                    </th>
-                </tr>
+            <?php
+
+                $dataPrint_users = '';
+
+                foreach ($datarest_provedores as $user) {
+                    $dataPrint_users .= '
+                        <tr>
+                            <td>' . $user["nombre_proveedor"] . '</td>
+                            <td>' . $user["ciudad"] . '</td>
+                            <td>' . $user["nit"] . '</td>
+                            <td>' . $user["tipo_producto"] . '</td>
+                            <td>' . $user["descripcion"] . '</td>
+
+
+                            <th class="th_ankor">                                                                                                                                                         
+                                <form method="post" action="db/db_delete_proveedores.php" id="">
+                                    <input type="hidden" name="delete_product" value="' . htmlentities($user["id_proveedor"]) . '">
+                                    <button type="submit" class="submit" id="id_delete_alert">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                                            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
+                                        </svg>                                    
+                                    </button>                                  
+                                </form>                              
+                            </th>
+                        </tr>
+                    ';
+                }
+
+                echo $dataPrint_users;
+
+                ?>
             </tbody>
         </table>
     </div>
@@ -250,34 +283,40 @@
         <div>
             <h2 style="font-size: 20px;">Agregar nuevo provedor</h2>
         </div>
-        <form class="paddin_top">
+        <form class="paddin_top" method="post" action="db/send_proveedores.php">
             <div class="grid-columns">
                 <div class="bloque_inputs">
                     <label for="">Nombre Provedor</label>
-                    <input type="text">
+                    <input type="text" name="nombre_proveedor">
                 </div>               
                 <div class="bloque_inputs">
                     <label for="">Direccion localidad</label>
-                    <input type="text">
-                </div>
+                    <input type="text" name="direccion_localidad">
+                </div>             
             </div>
             <div class="grid-columns">
                 <div class="bloque_inputs">
                     <label for="">Tipo de documento</label>
-                    <select name="" id="select_tipe">
+                    <select id="select_tipe" require name="tipo_documento">
                         <option value="" selected>Seleccionar Tipo</option>
-                        <option value="">Tarjeta de identidad</option>
-                        <option value="">Cedula de ciudadania</option>
-                        <option value="">Cedula de entranjeria</option>
+                        <?php                         
+                            $print_options = '';
+                            foreach($datarest_document as $option) {
+                                $print_options .= '                             
+                                    <option value="' .$option["id_tipo_documento"]. '">' .$option["descripcion"]. '</option>
+                                ';
+                            }
+                            echo $print_options;
+                        ?>                  
                     </select>
                 </div>
                 <div class="bloque_inputs">
                     <label for="precioUnitario">NIT</label>
-                    <input type="text" id="precioUnitario">
+                    <input type="text" id="precioUnitario" name="nit">
                 </div>
                 <div class="bloque_inputs">
                     <label for="precioUnitario">Fecha de registro</label>
-                    <input type="date" id="precioUnitario">
+                    <input type="date" id="precioUnitario" name="fecha_registro">
                 </div>
             </div>
             <div>
@@ -285,30 +324,47 @@
             </div>
             <div class="grid-columns">
                 <div class="bloque_inputs">
-                    <label for="">Tipo de producto</label>
-                    <input type="text">
+                <label for="">Tipo de producto</label>
+                    <select id="select_tipe" require name="tipo_producto">
+                        <option value="" selected>Seleccionar</option>
+                        <?php                         
+                            $print_options = '';
+                            foreach($datarest_tipo_p as $option) {
+                                $print_options .= '                             
+                                    <option value="' .$option["id_tipo_producto"]. '">' .$option["nombre"]. '</option>
+                                ';
+                            }
+                            echo $print_options;
+                        ?>   
+                    </select>
                 </div>               
                 <div class="bloque_inputs">
                     <label for="">Ciudad</label>
-                    <select name="" id="select_tipe">
-                        <option value="" selected>Seleccionar Ciudad</option>
-                        <option value="">T1</option>
-                        <option value="">T2</option>
-                        <option value="">T3</option>
+                    <select id="select_tipe" require name="ciudad">
+                        <option selected>Seleccionar Ciudad</option>
+                        <?php                         
+                            $print_options = '';
+                            foreach($datarest_ciudad as $option) {
+                                $print_options .= '                             
+                                    <option value="' .$option["id_ciudad"]. '">' .$option["nombre"]. '</option>
+                                ';
+                            }
+                            echo $print_options;
+                        ?>   
                     </select>
                 </div>
                 <div class="bloque_inputs">
                     <label for="">Fecha de Afiliacion</label>
-                    <input type="date">
+                    <input type="date" name="fecha_afiliacion">
                 </div>
             </div>
             <div class="grid-columns">
                 <div class="bloque_inputs">
                     <label for="precioUnitario">NIT empresarial</label>
-                    <input type="text" id="precioUnitario">
+                    <input type="text" id="precioUnitario" name="nit_empresarial">
                 </div>                              
             </div>
-            <button>Registrar</button>
+            <button type="submit">Registrar</button>
         </form>
     </div>
 

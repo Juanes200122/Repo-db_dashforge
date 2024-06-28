@@ -1,3 +1,8 @@
+<?php
+include '../db/consult_usuarios.php';
+
+?>
+
 <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">-->
 <link rel="stylesheet" type="text/css" href="assets/css/css_datatables.css">
 
@@ -195,6 +200,17 @@
         border-bottom: 1px solid #e5e5e5;
         outline: none;
     }
+
+    
+    #id_delete_alert {
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
+        border-radius: 0;
+        width: max-content;
+        color: red;
+        box-shadow: none;
+    }
 </style>
 
 <div class="flex_flex">
@@ -206,25 +222,44 @@
                     <th>Nombre</th>
                     <th>Tipo</th>
                     <th>Cantidad</th>
+                    <th>Precio en bodega</th>
                     <th>Referencia</th>
                     <th style="text-align: center;">Configuraciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>22</td>
-                    <td>Papel de baño</td>
-                    <td>baño</td>
-                    <td>34</td>
-                    <td>8773654</td>
-                    <th class="th_ankor">
-                        <form action="">
-                            <a class="ankor_link" href="">
-                                <img src="public/image/trash3-fill.svg" alt="">
-                            </a>
-                        </form>
-                    </th>
-                </tr>
+            <?php
+
+                $dataPrint_users = '';
+
+                foreach ($datarest_product as $user) {
+                    $dataPrint_users .= '
+                        <tr>
+                            <td>' . $user["id_producto"] . '</td>
+                            <td>' . $user["nombre"] . '</td>
+                            <td>' . $user["tipo_producto"] . '</td>
+                            <td>' . $user["cantidad"] . '</td>
+                            <td>' . $user["precio"] . '</td>
+                            <td>' . $user["referencia_id"] . '</td>
+
+
+                            <th class="th_ankor">                                                                                                                                                         
+                                <form method="post" action="db/db_delete_product.php" id="">
+                                    <input type="hidden" name="delete_product" value="' . htmlentities($user["id_producto"]) . '">
+                                    <button type="submit" class="submit" id="id_delete_alert">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                                            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
+                                        </svg>                                    
+                                    </button>                                  
+                                </form>                              
+                            </th>
+                        </tr>
+                    ';
+                }
+
+                echo $dataPrint_users;
+
+                ?>
             </tbody>
         </table>
     </div>
@@ -242,15 +277,15 @@
         </div>
         <div class="grafict">
             <div class="lap_-01">
-                <span>Usuarios Actuales</span>
+                <span>Total de registros</span>
                 <span class="spanSVG">
-                    <img src="../public/image/people.svg" alt="">
+                    <img src="public/image/people.svg" alt="">
                 </span>
             </div>
             <div class="conunt_user">
-                <span>9</span>
+                <span><?= $total_usuarios ?></span>
             </div>
-            <div class="skill-box">
+            <!-- <div class="skill-box">
                 <div class="skill-bar">
                     <span class="skill-per User-total" style="width: 10%">
                         <span class="tooltip">6</span>
@@ -263,7 +298,7 @@
                         <span class="tooltip">3</span>
                     </span>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -274,40 +309,65 @@
         <div>
             <h2 style="font-size: 20px;">Agregar Producto</h2>
         </div>
-        <form class="paddin_top">
+        <form class="paddin_top" method="post" action="db/send_dataProductos.php">
             <div class="grid-columns">
                 <div class="bloque_inputs">
                     <label for="">Nombre Producto</label>
-                    <input type="text">
+                    <input type="text" name="nombre">
                 </div>                
                 <div class="bloque_inputs">
-                    <label for="">Tipo de producto</label>
-                    <input type="text">
+                <label for="">Categoria de producto</label>
+
+                <select id="select_tipe" require name="tipo_producto">                    
+                        <option value="" selected>Seleccionar</option>
+                        <?php                         
+                            $print_options = '';
+                            foreach($datarest_tipo_p as $option) {
+                                $print_options .= '                             
+                                    <option value="' .$option["id_tipo_producto"]. '">' .$option["nombre"]. '</option>
+                                ';
+                            }
+                            echo $print_options;
+                        ?>   
+                    </select>
                 </div>
                 <div class="bloque_inputs">
                     <label for="cantidad">Cantidad</label>
-                    <input type="text" id="cantidad">
+                    <input type="text" id="cantidad" name="cantidad">
                 </div>
             </div>
             <div class="grid-columns">
                 <div class="bloque_inputs">
                     <label for="">Seleccionar tipo de provedor</label>
-                    <select name="" id="select_tipe">
-                        <option value="" selected>Provedor</option>
-                        <option value="">a</option>
-                        <option value="">b</option>
+                    <select id="select_tipe" require name="id_proveedor">
+                        <option value="" selected>Seleccionar</option>
+                        <?php                         
+                            $print_options = '';
+                            foreach($datarest_tipo_provedor as $option) {
+                                $print_options .= '                             
+                                    <option value="' .$option["id_proveedor"]. '">' .$option["nombre"]. '</option>
+                                ';
+                            }
+                            echo $print_options;
+                        ?>   
                     </select>
                 </div>
                 <div class="bloque_inputs">
                     <label for="precioUnitario">Precio unitario</label>
-                    <input type="text" id="precioUnitario">
+                    <input type="text" id="precioUnitario" name="precio">
                 </div>
                 <div class="bloque_inputs">
                     <label for="precioUnitario">Fecha de registro</label>
-                    <input type="date" id="precioUnitario">
+                    <input type="date" id="precioUnitario" name="fecha_ingreso">
                 </div>
             </div>
-            <button>Registrar</button>
+            <div class="grid-columns">               
+                <div class="bloque_inputs">
+                    <label for="precioUnitario">Referencia</label>
+                    <input type="text" id="precioUnitario" name="referencia_id">
+                </div>
+            </div>
+            <button class="submit">Registrar</button>
         </form>
     </div>
 

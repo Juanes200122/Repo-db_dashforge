@@ -3,12 +3,12 @@
 include 'conexion.php';
 
 $dashboard_analityc = "SELECT 'Productos' AS entidad, COUNT(*) AS cantidad FROM information_schema.productos
-                            UNION ALL
-                            SELECT 'Proveedores' AS entidad, COUNT(id_proveedor) AS cantidad FROM information_schema.proveedores
-                            UNION ALL
-                            SELECT 'Usuarios' AS entidad, COUNT(id_usuario) AS cantidad FROM information_schema.usuarios
-                            UNION ALL
-                            SELECT 'Deudas Pagos' AS entidad, SUM(monto) AS cantidad FROM information_schema.deudaspagos";
+UNION ALL
+SELECT 'Proveedores' AS entidad, COUNT(id_proveedor) AS cantidad FROM information_schema.proveedores
+UNION ALL
+SELECT 'Usuarios' AS entidad, COUNT(id_usuario) AS cantidad FROM information_schema.usuarios
+UNION ALL
+SELECT 'Deudas Pagos' AS entidad, SUM(precio) AS cantidad FROM information_schema.productos";
 
 $result = pg_query($db, $dashboard_analityc);
 
@@ -33,5 +33,7 @@ while ($row = pg_fetch_assoc($result)) {
             break;
     }
 }
+
+
 
 ?>
