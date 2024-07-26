@@ -27,10 +27,10 @@ body {
   height: max-content;
 }
 .container_element .section_container {
-  width: calc(100% - 300px);
+  width: calc(100% - 270px);
   height: 100dvh;
   position: relative;
-  left: 300px;
+  left: 270px;
 }
 .container_element .section_container .navbar-nav {
   width: 100%;
